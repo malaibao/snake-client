@@ -2,23 +2,28 @@ let connection;
 
 const handleUserInput = (userInput, conn) => {
     const instruction = {
-        'w': 'up',
-        'a': 'left',
-        's': 'down',
-        'd': 'right',
-        '\u001B\u005B\u0041': 'up',
-        '\u001B\u005B\u0043': 'right',
-        '\u001B\u005B\u0042': 'down',
-        '\u001B\u005B\u0044': 'left'
+        'w': { 'isMovement': true, 'movement': 'up' },
+        'a': { 'isMovement': true, 'movement': 'left' },
+        's': { 'isMovement': true, 'movement': 'down' },
+        'd': { 'isMovement': true, 'movement': 'right' },
+        '\u001B\u005B\u0041': { 'isMovement': true, 'movement': 'up' },
+        '\u001B\u005B\u0042': { 'isMovement': true, 'movement': 'down' },
+        '\u001B\u005B\u0043': { 'isMovement': true, 'movement': 'right' },
+        '\u001B\u005B\u0044': { 'isMovement': true, 'movement': 'left' },
+        'l': { 'isMessage': true, 'msg': 'go long' },
+        'h': { 'isMessage': true, 'msg': 'Hello!' },
     }
+
     // Check if it is Ctrl-C
-    console.log('userInput:', userInput);
     if (userInput === '\u0003') {
         process.exit();
     }
     else if (instruction[userInput]) {
-        conn.write(`Move: ${instruction[userInput]}`);
-
+        if (instruction[userInput]['isMovement']) {
+            conn.write(`Move: ${instruction[userInput]['movement']}`);
+        } else if (instruction[userInput]['isMessage']) {
+            conn.write(`Say: ${instruction[userInput]['msg']}`);
+        }
     } else {
         console.log('Invalid userInput');
     }
