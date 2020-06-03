@@ -5,7 +5,11 @@ const handleUserInput = (userInput, conn) => {
         'w': 'up',
         'a': 'left',
         's': 'down',
-        'd': 'right'
+        'd': 'right',
+        '\u001B\u005B\u0041': 'up',
+        '\u001B\u005B\u0043': 'right',
+        '\u001B\u005B\u0042': 'down',
+        '\u001B\u005B\u0044': 'left'
     }
     // Check if it is Ctrl-C
     console.log('userInput:', userInput);
