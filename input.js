@@ -11,7 +11,11 @@ const handleUserInput = (userInput, conn) => {
         '\u001B\u005B\u0043': { 'isMovement': true, 'movement': 'right' },
         '\u001B\u005B\u0044': { 'isMovement': true, 'movement': 'left' },
         'l': { 'isMessage': true, 'msg': 'go long' },
-        'h': { 'isMessage': true, 'msg': 'Hello!' },
+        'h': { 'isMessage': true, 'msg': 'Hellooooo!' },
+        'o': { 'isMessage': true, 'msg': '~OM NOM NOM~' },
+        'b': { 'isMessage': true, 'msg': 'Bye!' },
+        'x': { 'isMessage': true, 'msg': '=D' },
+        'm': { 'isMessage': true, 'msg': '<3' },
     }
 
     // Check if it is Ctrl-C
