@@ -14,9 +14,11 @@ const connect = function() {
     conn.on('connect', () => {
         conn.write('Name: Wow');
         conn.write('Move: left');
-        setInterval(() => {
+        let testing = setInterval(() => {
             conn.write('Move: left');
         }, 500)
+
+        clearTimeout(testing);
         // setTimeout(() => {
         // }, 500);
         // conn.write('Move: up');
